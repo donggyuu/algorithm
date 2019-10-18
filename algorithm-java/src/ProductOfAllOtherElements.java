@@ -15,13 +15,16 @@ public class ProductOfAllOtherElements {
         int[] inputA = {1, 2, 3, 4, 5};
         int[] inputB = {3, 2, 1};
 
-        System.out.println("outputA : " + Arrays.toString(productOfAllOtherElements(inputA)));
-        System.out.println("outputB : " + Arrays.toString(productOfAllOtherElements(inputB)));
+        System.out.println("outputA : " + Arrays.toString(productOfAllOtherElementsOne(inputA)));
+        System.out.println("outputB : " + Arrays.toString(productOfAllOtherElementsOne(inputB)));
+
+        System.out.println("outputA_1 : " + Arrays.toString(productOfAllOtherElementsTwo(inputA)));
+        System.out.println("outputB_2 : " + Arrays.toString(productOfAllOtherElementsTwo(inputB)));
 
     }
 
 
-    private static int[] productOfAllOtherElements(int[] inputArray) {
+    private static int[] productOfAllOtherElementsOne(int[] inputArray) {
 
         // get length of array
         int arrayLength = inputArray.length;
@@ -36,6 +39,42 @@ public class ProductOfAllOtherElements {
         int[] outputArray = new int[arrayLength];
         for (int i=0; i<arrayLength; i++) {
             outputArray[i] = prdAllElements / inputArray[i];
+        }
+
+        return outputArray;
+    }
+    
+    private static int[] productOfAllOtherElementsTwo(int[] inputArray) {
+
+        int arrayLength = inputArray.length;
+
+        
+        int[] outputArray = new int[arrayLength];
+        
+        
+        for (int i=0; i<arrayLength; i++) {
+
+
+            // i번 만큼곱셈을 한다. 
+            int prdLeft = inputArray[i];
+            int prdRight = inputArray[i];
+
+            int countA = 0;
+            while (countA < i) {
+                prdLeft *= inputArray[countA];
+                countA++;
+            }
+
+            int countB = 0;
+            while (countB < inputArray.length - i -1) {
+                prdRight *= inputArray[inputArray.length - 1 - countB];
+                countB++;
+            }
+
+            outputArray[i] = prdLeft * prdRight;
+            
+
+            
         }
 
         return outputArray;
