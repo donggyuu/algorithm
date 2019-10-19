@@ -23,6 +23,9 @@ public class ProductOfAllOtherElements {
     }
 
 
+    /*
+     * get all product of elements then divide with inputArray[i]
+     */
     private static int[] productOfElementsUsingDevide(int[] inputArray) {
 
         // get length of array
@@ -43,6 +46,12 @@ public class ProductOfAllOtherElements {
         return outputArray;
     }
 
+
+    /*
+     * 1. get elements before inputArray[i]
+     * 2. get elements after inputArray[i]
+     * 3. product before&after elements
+     */
     private static int[] productOfElementsUsingProduct(int[] inputArray) {
 
         // get length of array
