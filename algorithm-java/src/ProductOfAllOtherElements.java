@@ -15,16 +15,15 @@ public class ProductOfAllOtherElements {
         int[] inputA = {1, 2, 3, 4, 5};
         int[] inputB = {3, 2, 1};
 
-        System.out.println("outputA : " + Arrays.toString(productOfAllOtherElementsOne(inputA)));
-        System.out.println("outputB : " + Arrays.toString(productOfAllOtherElementsOne(inputB)));
+        System.out.println("outputA-using devide : " + Arrays.toString(productOfElementsUsingDevide(inputA)));
+        System.out.println("outputB-using devide : " + Arrays.toString(productOfElementsUsingDevide(inputB)));
 
-        System.out.println("outputA_1 : " + Arrays.toString(productOfAllOtherElementsTwo(inputA)));
-        System.out.println("outputB_2 : " + Arrays.toString(productOfAllOtherElementsTwo(inputB)));
-
+        System.out.println("outputA_using product : " + Arrays.toString(productOfElementsUsingProduct(inputA)));
+        System.out.println("outputB_using product : " + Arrays.toString(productOfElementsUsingProduct(inputB)));
     }
 
 
-    private static int[] productOfAllOtherElementsOne(int[] inputArray) {
+    private static int[] productOfElementsUsingDevide(int[] inputArray) {
 
         // get length of array
         int arrayLength = inputArray.length;
@@ -43,38 +42,39 @@ public class ProductOfAllOtherElements {
 
         return outputArray;
     }
-    
-    private static int[] productOfAllOtherElementsTwo(int[] inputArray) {
 
+    private static int[] productOfElementsUsingProduct(int[] inputArray) {
+
+        // get length of array
         int arrayLength = inputArray.length;
 
-        
         int[] outputArray = new int[arrayLength];
-        
-        
+
         for (int i=0; i<arrayLength; i++) {
 
+            // set initial value 
+            int prdLeft = 1;
+            int prdRight = 1;
 
-            // i번 만큼곱셈을 한다. 
-            int prdLeft = inputArray[i];
-            int prdRight = inputArray[i];
+            // get product of left value
+            // ex. for getting outputArray[2] then get product of inputArray[0], inputArray[1]
+            int countFlgA = 0;
+            while (countFlgA < i) {
+                prdLeft *= inputArray[countFlgA];
 
-            int countA = 0;
-            while (countA < i) {
-                prdLeft *= inputArray[countA];
-                countA++;
+                countFlgA++;
             }
 
-            int countB = 0;
-            while (countB < inputArray.length - i -1) {
-                prdRight *= inputArray[inputArray.length - 1 - countB];
-                countB++;
+            // get product of right value
+            // ex. for getting outputArray[2] then get product of inputArray[3], inputArray[4]...
+            int countFlgB = 0;
+            while (countFlgB < inputArray.length - i -1) {
+                prdRight *= inputArray[inputArray.length- countFlgB -1];
+
+                countFlgB++;
             }
 
             outputArray[i] = prdLeft * prdRight;
-            
-
-            
         }
 
         return outputArray;
