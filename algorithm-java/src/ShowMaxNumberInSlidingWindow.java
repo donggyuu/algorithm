@@ -1,3 +1,5 @@
+import com.sun.xml.internal.bind.v2.TODO;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -28,7 +30,7 @@ public class ShowMaxNumberInSlidingWindow {
      * [V4]   3
      */
 
-    // input 이 list로 들어왔을 경우도 풀어보기
+    // TODO : solve this -> when given stream number is int[]
     public static void main(String[] args) {
 
         List<Integer> window = new ArrayList<>();
@@ -57,6 +59,7 @@ public class ShowMaxNumberInSlidingWindow {
 
             // print max number from window
             if (windowSize <= countPrintMax) {
+                // TODO : another way not using collections?
                 System.out.println(Collections.max(window));
             }
             countPrintMax++;
