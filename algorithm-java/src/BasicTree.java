@@ -1,5 +1,9 @@
 public class BasicTree {
 
+    /**
+     * Make basic tree by Linked List
+     */
+
     public static void main(String[] args) {
 
         TreeNode bt1 = new TreeNode(1);
