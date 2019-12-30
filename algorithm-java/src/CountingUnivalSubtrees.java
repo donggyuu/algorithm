@@ -31,10 +31,10 @@ public class CountingUnivalSubtrees {
 
     public static void main(String[] args) {
 
-        TreeRoot bt1 = new TreeRoot("a");
-        TreeRoot bt2 = new TreeRoot("b");
-        TreeRoot bt3 = new TreeRoot("c");
-        TreeRoot bt4 = new TreeRoot("d");
+        TreeNode bt1 = new TreeNode("a");
+        TreeNode bt2 = new TreeNode("a");
+        TreeNode bt3 = new TreeNode("a");
+        TreeNode bt4 = new TreeNode("a");
 
         bt1.makeLeftSubTree(bt2);
         bt1.makeRightSubTree(bt3);
@@ -48,64 +48,22 @@ public class CountingUnivalSubtrees {
     }
 
 
-    private static boolean isUnival(TreeRoot treeRoot, Object treeValue) {
-        return univalHelper(treeRoot, treeValue);
+    private static boolean isUnival(TreeNode treeNode, Object treeValue) {
+        return univalHelper(treeNode, treeValue);
     }
 
-    private static boolean univalHelper(TreeRoot treeRoot, Object treeValue) {
+    private static boolean univalHelper(TreeNode treeNode, Object treeValue) {
 
-        if (treeRoot == null) {
+        if (treeNode == null) {
             return true;
         }
 
-        if (treeRoot.value == treeValue) {
-            return univalHelper(treeRoot.left, treeValue)
-                    && univalHelper(treeRoot.right, treeValue);
+        if (treeNode.value == treeValue) {
+            return univalHelper(treeNode.left, treeValue)
+                    && univalHelper(treeNode.right, treeValue);
         }
 
         return false;
-    }
-
-
-    /**
-     * sample tree
-     */
-    static class TreeRoot {
-
-        Object value;
-        TreeRoot left;
-        TreeRoot right;
-
-        public TreeRoot(Object value) {
-            this.value = value;
-            this.left = null;
-            this.right = null;
-        }
-
-        public void makeLeftSubTree(TreeRoot sub) {
-
-            if (left != null) {
-                this.left = null;
-            }
-            this.left = sub;
-        }
-
-        public void makeRightSubTree(TreeRoot sub) {
-            if (right != null) {
-                this.right = null;
-            }
-            this.right = sub;
-        }
-
-        public Object getValue() {
-            return value;
-        }
-        public TreeRoot getLeftSubTree() {
-            return this.left;
-        }
-        public TreeRoot getRightSubTree() {
-            return this.right;
-        }
     }
 
 }
