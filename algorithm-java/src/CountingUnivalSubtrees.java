@@ -1,5 +1,3 @@
-// NOT YET
-
 public class CountingUnivalSubtrees {
 
     /**
