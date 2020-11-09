@@ -17,29 +17,39 @@
 
 '''
 
-# 뒤집는 함수인 def reverse(x) 와 소수인지를 확인하는 함수 def isPrime(x)를 반드시 작성하 여 프로그래밍 한다.
+def getReversedNum(inputNum):
+    reversed = 0
 
-n = int(input())
-nList = list(map(int, input().split()))
-
-reversed_list = []
-
-# 맨 뒤부터 나머지로 얻는다
-
-
-def reverse_function(number):
-    res = 0
-    while number > 0:
+    while inputNum > 0:
         # 맨 뒤 구하기
-        t = number % 10
+        tailNum = inputNum % 10
 
         # 맨 뒤 값 더하기. 결과값에다가!
-        # 결과값을 res로 따로 선언하는게 편함.
-        res = res * 10 + t
+        reversed = reversed * 10 + tailNum
 
         # 맨 뒤의 값은 활용 완료니까 제외한다.
-        number = number // 10
+        inputNum = inputNum // 10
 
-    return res
+    return reversed
 
-print('find last val', reverse_function(nList[0]))
+def isPrimeNum(inputNum):
+    if inputNum == 1:
+        return False
+    # ex. 12면 7이상이라면 어차피 안 나누어 떨어짐
+    for i in range(2, inputNum//2 + 1):
+        if inputNum%i == 0:
+            return False
+
+    return True
+
+
+# ----------------------------------------
+
+n = int(input())
+inputNumList = list(map(int, input().split()))
+
+for i in range(len(inputNumList)):
+    inputReversedNum = getReversedNum(inputNumList[i])
+
+    if isPrimeNum(inputReversedNum):
+        print(inputReversedNum, end=' ')
