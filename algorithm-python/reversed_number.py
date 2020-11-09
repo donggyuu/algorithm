@@ -17,6 +17,7 @@
 
 '''
 
+# using for
 def getReversedNum(inputNum):
     reversed = 0
 
@@ -31,6 +32,17 @@ def getReversedNum(inputNum):
         inputNum = inputNum // 10
 
     return reversed
+
+# using while
+def getReversedNum_byWhile(inputNum):
+    reversed = 0
+    while inputNum > 0:
+        tailNum = inputNum % 10
+        reversed = reversed * 10 + tailNum
+        inputNum = inputNum // 10
+    
+    return inputNum
+
 
 def isPrimeNum(inputNum):
     if inputNum == 1:
