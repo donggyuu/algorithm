@@ -18,17 +18,6 @@ N명 학생들의 평균(소수 첫째자리 반올림)을 구하고,
 (평균 74에 근접한 값은 )
 '''
 
-# ave = find average
-
-# temp = "ave-value"
-# 비교해 가면서 가장 작은 값을 get
-
-# 같을 경우 처리는? 이미 있을 경우 변동 없음.
-# 작으면 교환
-# 같으면? 
-# 먼저 존재 -> 그대로,
-
-
 nStudents = int(input())
 scoreList = list(map(int, input().split()))
 
