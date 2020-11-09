@@ -10,6 +10,7 @@
 5 6 7
 '''
 
+
 n, m = map(int, input().split())
 
 numPlusPoly = [0]*(n+m+1) # 합의 최대가 n+m니까 굳이 n*m개 배열 세팅 안해도 됨
