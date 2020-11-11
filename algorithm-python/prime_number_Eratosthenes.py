@@ -4,33 +4,43 @@
 
 ** input
 첫 줄에 자연수의 개수 N(2<=N<=200,000)이 주어집니다.
-
 20
 
 ** output
 첫 줄에 소수의 개수를 출력합니다.
-
 8
 '''
 
 # 1은 제외
-# 본인은 제외하고 배수 거르기
+# 본인은 소수라고 치고 본인의 배수는 거르기
 
-# 코드 초안
+totalNum = int(input())
+list = [0]*(totalNum+1)
 
-nInteger = int(input())
-arr = [0]*nInteger
+cntPrime = 0
+for i in range(2, totalNum+1):  # totalNum자신도 소수 판별에 들어감
 
-arr[0] = -1
-arr[1] = -1
+    # 자기 자신은 제외
+    if list[i] == 0:
+        cntPrime += 1
 
-for i in range(2, nInteger):
+        for j in range(i, totalNum+1, i):
+            list[j] = -1
 
-    while i < nInteger:
-        i += i
-        if i < nInteger:
-            arr[i] = -1
+print(cntPrime)
 
-for i in range(nInteger):
-    if arr[i] == 0:
-        print(i, end=' ')
+
+# # 초기 코드
+# list[0] = -1
+# list[1] = -1
+
+# for i in range(2, nInteger):
+
+#     while i < nInteger:
+#         i += i
+#         if i < nInteger:
+#             list[i] = -1
+
+# for i in range(nInteger):
+#     if list[i] == 0:
+#         print(i, end=' ')
