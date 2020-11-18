@@ -9,6 +9,42 @@ N개의 수로 된 수열 A[1], A[2], ..., A[N] 이 있다.
 5
 '''
 
+# ------------------------------
+# 코드가 이해가 안가면 저장해둔 그림 다시 참고
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+
+'''
+[a, b, c, d] 가 있다면,
+a를 고정해두고, (a, b), (a, c), (a, d) 이런 식으로 탐색
+여기서 a에 해당하는 것을 lt,  b,c,d에 해당하는 것을 rt로 설정
+'''
+lt = 0
+rt = 1
+total = a[0]
+cnt = 0
+
+while True:
+    if total < m:
+        if rt < n:
+            total += a[rt]
+            rt += 1
+        else:
+            break
+    elif total == m:
+        cnt += 1
+        total -= a[lt]
+        lt += 1
+    else:
+        total -= a[lt]
+        lt += 1
+
+print(cnt)
+        
+# ------------------------------
+# 초기 풀이
+
+
 # 입력 받기
 len, sum = map(int, input().split())
 targetList = list(map(int, input().split()))

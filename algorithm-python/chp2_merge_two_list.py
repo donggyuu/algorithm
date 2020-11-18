@@ -10,9 +10,6 @@
 1 2 3 3 5 6 7 9
 '''
 # -------
-# 강의 풀이 이해하기.
-
-## 직접 구현하기.
 
 lenA = int(input())
 aList = list(map(int, input().split()))
