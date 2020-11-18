@@ -31,7 +31,6 @@ while pointOne < lenA and pointTwo < lenB:
         resultList.append(aList[pointOne])
         pointOne+=1
 
-
 # 대소비교 후 남은 리스트를 결과 리스트에 붙인다.
 if pointOne < lenA:
     resultList = resultList + aList[pointOne:]
