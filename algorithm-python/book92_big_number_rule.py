@@ -13,9 +13,13 @@
 
 **output
 46
-
 '''
 # 큰 거 우선으로 하고, 약수관련 issue가 없어보이니 그리디지 않을까 하는 생각
+
+
+# --------------------------------------------
+# 그리디로 풀기
+# --------------------------------------------
 
 n, m, k = map(int, input().split())
 myList = list(map(int, input().split()))
@@ -37,4 +41,40 @@ while count < m:
         resultSum += secMaxValue
         count += 1
 
+# --- 개선된 풀이 --------------------------------
+while True:
+    for i in range(k):
+        if m == 0:
+            break
+        resultSum += maxValue
+        m -= 1
+    
+    if m == 0:
+        break
+    resultSum += secMaxValue
+    m -= 1
+
+# --- 개선된 풀이 --------------------------------
+
 print(resultSum)
+
+
+# --------------------------------------------
+# 규칙성으로 풀기
+# --------------------------------------------
+n, m, k = map(int, input().split())
+data = list(map(int, input().split()))
+
+data.sort()
+first = data[n-1] # 젤 큰수
+second = data[n-2] # 두번째 큰 수
+
+# 큰 수가 더해지는 횟수
+count = m/(k+1) * k # (큰거3개, 작은거1개의 뭉텅이)
+count += m % (k+1)
+
+result = 0
+result += (count) * first # 젤 큰수 더하기
+result += (m-count) * second # 두번째 큰 수 더하기
+
+print(result)
