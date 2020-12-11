@@ -1,4 +1,5 @@
 # DFS는 스택을 이용 -> 재귀적으로 간단 구현
+# 스택 Library를 이용해 시간복잡도록 완하는 방법도 있음
 def dfs(graph, v, visited):
     visited[v] = True
     print(v, end=' ')
