@@ -6,7 +6,20 @@ dynamic의 사용 조건
 피보나치는 1과 2를 모두 만족한다. skill로서 메모제이션(배열 선언해서 저장)을 사용
 '''
 
-# ---- dynamic fibo ----
+# ---- dynamic fibo // Bottom-Up방식 ----
+d = [0] * 100
+
+d[1] = 1
+d[2] = 1
+n = 4
+
+for i in range(3, n+1):
+    d[i] = d[i-1] + d[i-2]
+
+print(d[n])
+
+
+# ---- dynamic fibo // Top-Down방식 ----
 d = [0] * 100
 
 def dynamic_fibo(x):
@@ -20,7 +33,7 @@ def dynamic_fibo(x):
     
     return d[x]
 
-print(dynamic_fibo(99))
+print(dynamic_fibo(4))
 
 
 # ---- 재귀적 fibo -------
