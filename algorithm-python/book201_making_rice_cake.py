@@ -14,34 +14,61 @@
 
 **output
 15
-
 '''
 
+# -------- 개선된 풀이 by Parametric Search --------
 
+n, m = list(map(int, input().split(' ')))
+array = list(map(int, input().split()))
 
+# 시작점, 끝점 설정 for 이진 탐색
+start = 0
+end = max(array)
 
-# -------- 초기 풀이 --------
+result = 0
+while(start <= end):
+    total = 0
+    mid = (start + end) // 2
 
-def getCuttingCake(h):
-    cuttingLength = 0
-    for i in range(n):
-        if cakeList[i] - h > 0:
-            cuttingLength += cakeList[i] - h
-    return cuttingLength
-
-# input
-n, m = map(int, input().split())
-cakeList = list(map(int, input().split()))
-h = 0
-absLenth = 9999
-
-while True:
-    # 손님이 요청한 길이와, 절단기로 자른 길이의 차가 최소인 h를 구해한다.
-    if absLenth >= abs(m-getCuttingCake(h)):
-        absLenth = abs(m-getCuttingCake(h))
-        h += 1 # (1)다음번에 break라면 이 +1은 뺴줘 한다.
+    # 잘린 떡의 양 계산
+    for x in array:
+        if x > mid:
+            total += x - mid
+    
+    # 떡의 양이 부족하면 왼쪽 탐색
+    if total < m:
+        end = mid - 1
     else:
-        h -= 1 # (1)에 의한 처리를 해줌
-        break
+        result = mid # 최대한 덜 잘렸을 대가 정답이기에, 여기서 result에 기록
+        start = mid + 1
+
+print(result)
+    
+
+
+
+# -------- 초기 풀이 by 순차탐색 --------
+
+# def getCuttingCake(h):
+#     cuttingLength = 0
+#     for i in range(n):
+#         if cakeList[i] - h > 0:
+#             cuttingLength += cakeList[i] - h
+#     return cuttingLength
+
+# # input
+# n, m = map(int, input().split())
+# cakeList = list(map(int, input().split()))
+# h = 0
+# absLenth = 9999
+
+# while True:
+#     # 손님이 요청한 길이와, 절단기로 자른 길이의 차가 최소인 h를 구해한다.
+#     if absLenth >= abs(m-getCuttingCake(h)):
+#         absLenth = abs(m-getCuttingCake(h))
+#         h += 1 # (1)다음번에 break라면 이 +1은 뺴줘 한다.
+#     else:
+#         h -= 1 # (1)에 의한 처리를 해줌
+#         break
         
-print(h)
+# print(h)
